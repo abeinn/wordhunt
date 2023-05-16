@@ -32,7 +32,7 @@ function App() {
       setLetters(letters.slice(0, -1));
       setGrid(newGrid);
       setCurrPos(currPos - 1);
-    } else if (key.toLowerCase() !== key.toUpperCase() && currPos !== Math.pow(size, 2)) {
+    } else if ((/[a-zA-Z]/).test(key) && currPos !== Math.pow(size, 2)) {
       const newGrid = [...grid];
       newGrid[Math.floor(currPos / size)][currPos % size] = key.toUpperCase();
       setLetters(letters + key.toUpperCase());

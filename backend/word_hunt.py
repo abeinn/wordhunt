@@ -54,12 +54,11 @@ def search(letters:str, g: Graph, v: int, t: TrieNode, visited: list):
     if t.marked:
         validWords.append(currChar)
         paths.append([v])
-    
 
     for w in g.adj[v]:
         nextChar = letters[w]
         if not visited[w] and nextChar in t.children:
-            x = search(letters, g, w, t.children[nextChar], visited)
+            x = search(letters, g, w, t.children[nextChar], visited[:])
             for word, path in zip(x[0], x[1]):
                 validWords.append(currChar + word)
                 paths.append([v] + path)
