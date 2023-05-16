@@ -6,11 +6,12 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 with open(os.path.join(__location__, "words.txt")) as f:
     words = map(lambda s: s.strip(), f.readlines())
 
+MIN_LEN = 3
 MAX_LEN = 25
 
 root = TrieNode()
 for word in words:
-    if len(word) <= MAX_LEN:
+    if MIN_LEN <= len(word) <= MAX_LEN:
         root.add(word)
 
 # Return a mapping of valid words to the path to form the word
