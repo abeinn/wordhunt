@@ -14,6 +14,13 @@ class TrieNode:
                 x = TrieNode()
                 self.children[c] = x
             x.add(word[1:])
+    
+    def contains(self, word):
+        if (len(word) == 0):
+            return self.marked
+        elif word[0] in self.children:
+            return self.children[word[0]].contains(word[1:])
+        return False
                 
     
 
