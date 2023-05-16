@@ -1,13 +1,11 @@
-from flask import Flask
+from flask import Flask, jsonify, request
+from word_hunt import solve
 
 api = Flask(__name__)
 
-@api.route('/data')
-def profile():
-    response_body = {
-        'Name':"geek", 
-        "Age":22,
-        "Date":"5", 
-        "programming":"python"    
-    }
-    return response_body
+@api.route('/solve')
+def solveWordHunt():
+
+    letters = request.args.get('input_value')
+    
+    return solve(letters)

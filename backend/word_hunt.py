@@ -30,14 +30,21 @@ def solve(letters: str):
             if j >= 0 and j < length:
                 g.addEdge(i, j)
 
-    output = {}
+    wordToPath = {}
     for i in range(length):
         visited = [False] * length
         validWords, paths = search(letters, g, i, root, visited)
         for word, path in zip(validWords, paths):
-            output[word] = path
+            wordToPath[word] = path
 
-    return dict(sorted(output.items(), key=lambda item: len(item[0]), reverse=True))
+    sortedWords = sorted(wordToPath.keys(), key=len, reverse=True)
+    output = []
+    id = 0
+    for w in sortedWords:
+        output.append({"id": id, "word": w, "path": wordToPath[w]})
+        id += 1
+    return output
+
 
 def search(letters:str, g: Graph, v: int, t: TrieNode, visited: list):
     visited[v] = True
