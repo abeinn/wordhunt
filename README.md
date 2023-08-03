@@ -1,5 +1,5 @@
 # Description
-Python program that playes Word Hunt, a game where players swipe words on a 4x4 board of letters. Users can use the program via React web app that connects to a Flask backend to input a board and visualize valid word paths. 
+Python program that plays Word Hunt, a game where players swipe words on a 4x4 board of letters. Users can use the program via React web app that connects to a Flask backend to input a board and visualize valid word paths. 
 # How It Works
 The `TrieNode` class enables the construction of Tries, and has the methods `add` and `contains`. On startup, every word from a list of words is added to the Trie. After a user types in all 16 letters in the grid and presses enter, a call is made to the Flask backend. The `solve` function takes in the 16 letters and constructs a graph, where each letter is a node that has edges to the eight surrounding letters. 
 
